@@ -1,0 +1,32 @@
+{
+  "name": "mazify-3d",
+  "version": "1.0.0",
+  "description": "Maze editor and 3d maze vizualization using aframe and vue js",
+  "main": "index.js",
+  "scripts": {
+    "serve": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palashbhowmick/mazeify-3d.git"
+  },
+  "keywords": [
+    "maze",
+    "3d",
+    "maze",
+    "aframe",
+    "vue",
+    "vuejs",
+    "vr"
+  ],
+  "author": "Palash Bhowmick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/palashbhowmick/mazeify-3d/issues"
+  },
+  "homepage": "https://github.com/palashbhowmick/mazeify-3d#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mazify 3D | Editor</title>
+    <meta name="description" content="Mazify 3D Editor" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        #container {
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .tile {
+            border: 1px solid #999;
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            cursor: pointer;
+        }
+
+        .tile:hover {
+            border: 1px solid red;
+        }
+
+        .tile-0 {
+            background-color: #ddd;
+        }
+
+        .tile-1 {
+            background-color: burlywood;
+        }
+        .toolbar{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="toolbar"> 
+            <span>Selected Tool: {{selectedType==0?"Eraser":"Tile"}}</span>
+            <button @click="selectedType=0">Eraser</button>
+            <button @click="selectedType=1">Tile</button>
+            <button @click="save">Save</button>
+            <a href="index.html">Goto Maze</a>
+        </div>
+        <div id="container">
+            <div v-for="block in map" :id="block.id" :key="block.id" :class="['tile', block.type>0?'tile-1':'tile-0']"
+                v-bind:style="{top: block.top+'px', left: block.left+'px'}" @mousemove="changeTile" @click="changeTile">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/editor.js"></script>
+
+</html>

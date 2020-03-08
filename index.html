@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mazify 3D</title>
+    <meta name="description" content="Mazify 3D" />
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+    <script src="js/maze.js"></script>
+</head>
+
+<body>
+    <a-scene fog="type: linear; color: #111; far: 15; near: 7">
+        <a-assets>
+            <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" />
+            <img id="brick-02" src="assets/brick-02.jpg" />            
+        </a-assets>
+
+        <a-sky height="2048" color="#111" width="2048"></a-sky>
+        <a-light type="ambient" color="#fff" intensity="0.8"></a-light>
+        <a-plane src="#groundTexture" static-body rotation="-90 0 0" height="100" width="100"></a-plane>
+
+        <a-entity id="player" camera="user-height: 1.7" universal-controls kinematic-body listener>
+        </a-entity>
+
+        <a-entity room> </a-entity>
+    </a-scene>
+</body>
+
+</html>
