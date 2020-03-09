@@ -1,0 +1,36 @@
+#container {
+  background-color: #ddd;
+  position: relative;
+}
+
+.tile {
+  border: 1px solid #999;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+}
+
+.tile:hover {
+  border: 1px solid red;
+}
+
+.tile-0 {
+  background-color: #ddd;
+}
+
+.tile-1 {
+  background-color: burlywood;
+}
+
+.tile-s {
+  background-color: green;
+}
+
+.tile-e {
+  background-color: red;
+}
+
+.toolbar {
+  margin-bottom: 10px;
+}

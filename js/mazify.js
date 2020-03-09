@@ -2,14 +2,14 @@
 AFRAME.registerComponent("mazify", {
 
     init: function () {
-        let data = {
+        let mazeData = {
             data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
             height: 20,
             width: 20
         }
 
         if (localStorage.getItem("maze-data") != undefined) {
-            data = JSON.parse(localStorage.getItem("maze-data"));
+            mazeData = JSON.parse(localStorage.getItem("maze-data"));
         }
 
         let maze = this.el;
@@ -18,13 +18,18 @@ AFRAME.registerComponent("mazify", {
         const maze_height = 12;
         const el = maze;
 
-        for (var x = 0; x < data.height; x++) {
-            for (var y = 0; y < data.width; y++) {
+        for (var x = 0; x < mazeData.height; x++) {
+            for (var y = 0; y < mazeData.width; y++) {
 
-                const i = (y * data.width) + x;
-                const position = `${((x - (data.width / 2)) * maze_size)} 1.5 ${(y - (data.height / 2)) * maze_size}`;
+                const i = (y * mazeData.width) + x;
 
-                if (data.data[i] === 1 || data.data[i] == 2 || data.data[i] === 3 || data.data[i] === 4) {
+                const position = {
+                    x: ((x - (mazeData.width / 2)) * maze_size),
+                    y: 1.5,
+                    z: (y - (mazeData.height / 2)) * maze_size
+                };
+
+                if (mazeData.data[i] >= 1 && mazeData.data[i] <= 2) {
                     let wall = document.createElement('a-box');
                     el.appendChild(wall);
 
@@ -37,6 +42,11 @@ AFRAME.registerComponent("mazify", {
                     wall.setAttribute('color', '#fff');
                     wall.setAttribute('material', 'src: #brick-02; repeat: 2 4');
                     wall.setAttribute('static-body', '');
+                }
+                else if (mazeData.data[i] == 's') {
+                    let player = document.querySelector("#player");
+                    let playerPos = player.getAttribute("position");
+                    player.setAttribute('position', { x: position.x, y: playerPos.y, z: position.z })
                 }
             }
         }

@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-        map: [],
+        mazeData: [],
         n: 20,
         m: 20,
         blockSize: 20,
@@ -20,14 +20,14 @@ var app = new Vue({
                     id: idx
                 }
             });
-            this.map = mazeData;
+            this.mazeData = mazeData;
             this.n = data.height;
             this.m = data.width;
         } else {
             let count = 0;
             for (let i = 0; i < this.n; i++) {
                 for (let j = 0; j < this.m; j++) {
-                    this.map.push({
+                    this.mazeData.push({
                         top: 0 + (i * this.blockSize),
                         left: 0 + (j * this.blockSize),
                         type: 0,
@@ -42,12 +42,22 @@ var app = new Vue({
         changeTile(e) {
             if (e.buttons == 1 || e.type == "click") {
                 let idx = parseInt(e.target.id);
-                this.map[idx].type = this.selectedType;
+
+                if (this.selectedType == 's') {//only one tile can be marked as start position
+                    this.mazeData.map(m => {
+                        if (m.type == 's') {
+                            m.type = 0
+                        }
+                    })
+                    this.mazeData[idx].type = this.selectedType;
+                } else {
+                    this.mazeData[idx].type = this.selectedType;
+                }
             }
         },
         save() {
             let arr = [];
-            this.map.forEach(item => {
+            this.mazeData.forEach(item => {
                 arr.push(item.type);
             });
 
