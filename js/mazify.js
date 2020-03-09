@@ -56,6 +56,7 @@ AFRAME.registerComponent("mazify", {
 
                     tile.setAttribute('material', 'src: #start');
                     tile.setAttribute('static-body', '');
+                    tile.setAttribute('id', 'start-tile');
 
                     let player = document.querySelector("#player");
                     let playerPos = player.getAttribute("position");
@@ -72,6 +73,7 @@ AFRAME.registerComponent("mazify", {
 
 
                     tile.setAttribute('material', 'src: #finish');
+                    tile.setAttribute('id', 'finish-tile');
                     tile.setAttribute('static-body', '');
                 }
             }
@@ -85,3 +87,10 @@ AFRAME.registerComponent("mazify", {
         }, 1000)
     }
 })
+
+function reset() {
+    // let finishDlgElm = document.querySelector("#finishDialog")
+    // finishDlgElm.setAttribute("style", "display: none");
+
+    location.reload();
+}

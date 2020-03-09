@@ -4,7 +4,7 @@
 }
 
 .tile {
-  border: 1px solid #999;
+  border: 1px solid #3f51b51f;
   position: absolute;
   height: 18px;
   width: 18px;
@@ -12,7 +12,7 @@
 }
 
 .tile:hover {
-  border: 1px solid red;
+  border: 1px solid #d50000;
 }
 
 .tile-0 {
@@ -20,15 +20,15 @@
 }
 
 .tile-1 {
-  background-color: burlywood;
+  background-color: #3f51b5;
 }
 
 .tile-s {
-  background-color: green;
+  background-color: #2e7d32;
 }
 
 .tile-f {
-  background-color: red;
+  background-color: #b71c1c;
 }
 
 .toolbar {
