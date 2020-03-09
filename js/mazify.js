@@ -47,6 +47,20 @@ AFRAME.registerComponent("mazify", {
                     let player = document.querySelector("#player");
                     let playerPos = player.getAttribute("position");
                     player.setAttribute('position', { x: position.x, y: playerPos.y, z: position.z })
+                } else if (mazeData.data[i] == 'e') {
+                    let tile = document.createElement('a-box');
+                    el.appendChild(tile);
+
+                    tile.setAttribute('width', maze_size);
+                    tile.setAttribute('height', 0.1);
+                    tile.setAttribute('depth', maze_size);
+
+                    tile.setAttribute('position', { x: position.x, y: 0, z: position.z });
+
+
+                    tile.setAttribute('color', '#fff');
+                    tile.setAttribute('material', 'src: #red-carpet; repeat: 4 4');
+                    tile.setAttribute('static-body', '');
                 }
             }
         }
