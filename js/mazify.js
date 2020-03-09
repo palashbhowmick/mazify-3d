@@ -64,5 +64,13 @@ AFRAME.registerComponent("mazify", {
                 }
             }
         }
+
+
+        setTimeout(() => {
+            let loader = document.querySelector("#loader");
+            loader.remove();
+            let scene = document.querySelector("a-scene");
+            scene.setAttribute("style", "display:block");
+        }, 1000)
     }
 })
