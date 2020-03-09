@@ -6,24 +6,30 @@
     <meta name="description" content="Mazify 3D" />
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
-    <script src="js/maze.js"></script>
+    <script src="js/mazify.js"></script>
+    <script src="js/player.js"></script>
 </head>
 
 <body>
-    <a-scene fog="type: linear; color: #111; far: 15; near: 7">
-        <a-assets>
-            <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" />
-            <img id="brick-02" src="assets/brick-02.jpg" />            
+    <a-scene fog="type: linear; color: #111; far: 1500; near: 7">
+        <!-- Assets -->
+        <a-assets>            
+            <img id="pavement" src="assets/pavement.jpg" />
+            <img id="brick-02" src="assets/brick-02.jpg" />
+            <img id="ball" src="assets/ball.jpg" />
         </a-assets>
 
+        <!-- Environment -->
         <a-sky height="2048" color="#111" width="2048"></a-sky>
         <a-light type="ambient" color="#fff" intensity="0.8"></a-light>
-        <a-plane src="#groundTexture" static-body rotation="-90 0 0" height="100" width="100"></a-plane>
+        <a-plane material="src: #pavement; repeat: 50 50" static-body rotation="-90 0 0" height="100" width="100"></a-plane>
 
-        <a-entity id="player" camera="user-height: 1.7" universal-controls kinematic-body listener>
+        <!-- Player -->
+        <a-entity id="player" camera="user-height: 1.7" universal-controls kinematic-body listener player>
         </a-entity>
 
-        <a-entity room> </a-entity>
+        <!-- Maze -->
+        <a-entity mazify> </a-entity>
     </a-scene>
 </body>
 

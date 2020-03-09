@@ -1,5 +1,5 @@
 
-AFRAME.registerComponent("room", {
+AFRAME.registerComponent("mazify", {
 
     init: function () {
         let data = {
@@ -12,11 +12,11 @@ AFRAME.registerComponent("room", {
             data = JSON.parse(localStorage.getItem("maze-data"));
         }
 
-        let room = this.el;
+        let maze = this.el;
 
         const maze_size = 3;
         const maze_height = 12;
-        const el = room;
+        const el = maze;
 
         for (var x = 0; x < data.height; x++) {
             for (var y = 0; y < data.width; y++) {
@@ -24,9 +24,8 @@ AFRAME.registerComponent("room", {
                 const i = (y * data.width) + x;
                 const position = `${((x - (data.width / 2)) * maze_size)} 1.5 ${(y - (data.height / 2)) * maze_size}`;
 
-                // if the number is 1 - 4, create a wall
                 if (data.data[i] === 1 || data.data[i] == 2 || data.data[i] === 3 || data.data[i] === 4) {
-                    wall = document.createElement('a-box');
+                    let wall = document.createElement('a-box');
                     el.appendChild(wall);
 
                     wall.setAttribute('width', maze_size);
@@ -41,6 +40,5 @@ AFRAME.registerComponent("room", {
                 }
             }
         }
-        // 
     }
 })
