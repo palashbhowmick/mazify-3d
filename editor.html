@@ -5,20 +5,26 @@
     <meta name="description" content="Mazify 3D Editor" />
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/editor.css" />
   </head>
 
   <body>
     <div id="app">
       <div class="toolbar">
-        <span>Selected Tool: {{selectedType==0?"Eraser":"Tile"}}</span>
-        <button @click="selectedType=0">Eraser</button>
-        <button @click="selectedType=1">Tile</button>
-        <button @click="selectedType='s'">Start</button>
-        <button @click="selectedType='f'">Finish</button>
-        <button @click="save">Save</button>
-        <a href="index.html">Goto Maze</a>
+        <button
+          v-for="tool in tools"
+          type="button"
+          :class="['btn', 'btn-blue',tool.type==selectedType?'btn-active':'' ]"
+          @click="selectedType=tool.type"
+        >
+          {{tool.label}}
+        </button>
+        <button class="btn btn-teal" @click="clear">Clear</button>
+        <button class="btn btn-teal" @click="level1">Level 1</button>
+        <button class="btn btn-teal" @click="level2">Level 2</button>
+        <button class="btn btn-teal" @click="save">Save</button>
+        <button class="btn btn-teal" @click="gotoMaze">Go to Maze</button>
       </div>
       <div id="container">
         <div
