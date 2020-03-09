@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/palashbhowmick/mazeify-3d.git"
+    "url": "git+https://github.com/palashbhowmick/mazify-3d.git"
   },
   "keywords": [
     "maze",
@@ -23,9 +23,9 @@
   "author": "Palash Bhowmick",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/palashbhowmick/mazeify-3d/issues"
+    "url": "https://github.com/palashbhowmick/mazify-3d/issues"
   },
-  "homepage": "https://github.com/palashbhowmick/mazeify-3d#readme",
+  "homepage": "https://github.com/palashbhowmick/mazify-3d#readme",
   "dependencies": {
     "live-server": "^1.2.1"
   }
