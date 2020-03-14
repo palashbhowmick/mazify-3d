@@ -34,7 +34,7 @@
 .toolbar {
   margin-bottom: 10px;
 }
-.btn {
+.mazify-editor .btn {
   border: none;
   color: #fff;
   padding: 8px 16px;
@@ -48,24 +48,24 @@
   border-radius: 0;
 }
 
-.btn-blue {
+.mazify-editor .btn-blue {
   background-color: #2196f3;
 }
-.btn-blue:hover {
+.mazify-editor .btn-blue:hover {
   background-color: #42a5f5;
 }
 
-.btn-teal {
+.mazify-editor .btn-teal {
   background-color: #009688;
 }
-.btn-teal:hover {
+.mazify-editor .btn-teal:hover {
   background-color: #80cbc4;
 }
 
-.btn-active {
-  outline: 2px solid #ff0000!important;
+.mazify-editor .btn-active {
+  outline: 2px solid #ff0000 !important;
 }
 
-.btn:focus {
+.mazify-editor .btn:focus {
   outline: none;
 }

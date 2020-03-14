@@ -94,3 +94,8 @@ function reset() {
 
     location.reload();
 }
+
+function cont() {
+    let finishDlgElm = document.querySelector("#finishDialog")
+    finishDlgElm.setAttribute("style", "display: none");
+}

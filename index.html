@@ -58,11 +58,11 @@
     </a-scene>
 
     <!-- The Modal -->
-    <div id="finishDialog" class="modal">
+    <div id="finishDialog" class="modal mazify" style="display: none;">
       <!-- Modal content -->
       <div class="modal-content">
         <div class="modal-header">
-          <!-- <span class="close">&times;</span> -->
+          <span class="close" onclick="cont()">&times;</span>
           <h2>Finished</h2>
         </div>
         <div class="modal-body">
@@ -72,6 +72,7 @@
         <div class="modal-footer">
           <h3></h3>
           <button class="button" onclick="reset()">Play Again</button>
+          <button class="button" onclick="cont()">Continue</button>
         </div>
       </div>
     </div>
