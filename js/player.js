@@ -2,13 +2,13 @@
 AFRAME.registerComponent("player", {
     init: function () {
         document.addEventListener('keyup', event => {
-            let player = document.querySelector("#player");
-
+            // Jump
             if (event.code === 'Space') {
-                if (player.getAttribute("position").y <= 2) {
+                let player = document.querySelector("#player");
+                if (player.getAttribute("position").y <= 2) { // prevent successive jump
                     player.setAttribute('velocity', '0 12 0');
                 }
-            }           
+            }
         })
 
         this.el.addEventListener('collide', (evt) => {

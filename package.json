@@ -4,7 +4,7 @@
   "description": "Maze editor and 3d maze vizualization using aframe and vue js",
   "main": "index.js",
   "scripts": {
-    "serve": "browser-sync -w",
+    "serve": "five-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/palashbhowmick/mazify-3d#readme",
   "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^2.27.9"
+    "browser-sync": "^2.27.9",
+    "five-server": "^0.1.3"
   }
 }
