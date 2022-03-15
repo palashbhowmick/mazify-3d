@@ -2,8 +2,7 @@ AFRAME.registerComponent("ball", {
     init: function () {
         let sceneEl = this.el.sceneEl;
         let player = document.querySelector("#player");
-        console.log("Ball init");
-        console.log(sceneEl);
+        
         document.addEventListener("click", () => {
             let playerPos = player.getAttribute("position")
 

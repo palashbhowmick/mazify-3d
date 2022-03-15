@@ -1,4 +1,4 @@
-var randomGeneration = function () {
+export function randomGeneration() {
 	let initialArr = new Array(18 * 18).fill(1);
 
 	function getArrVoisinDindex(index) {
@@ -24,9 +24,9 @@ var randomGeneration = function () {
 	let arrVoisin, indexFin, arrBifurc = [indexStart];
 
 	while (arrBifurc.length != 0) {
-		
+
 		arrVoisin = getArrVoisinDindex(arrBifurc.pop());
-		
+
 		while (arrVoisin.length != 0) {
 
 			const nombreRandom = Math.floor(Math.random() * arrVoisin.length);

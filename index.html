@@ -1,80 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mazify 3D</title>
-    <meta name="description" content="Mazify 3D" />
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
-    <script src="js/mazify.js"></script>
-    <script src="js/player.js"></script>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Spartan&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+<head>
+  <title>Mazify 3D</title>
+  <meta name="description" content="Mazify 3D" />
+  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+  <script src="js/mazify.js"></script>
+  <script type="module">
+    import { reset, cont, level1, level2, levelRand, load } from './js/controls.js'
+    window.cont = cont; //TODO: avoid this in future
+    window.reset = reset;
+    window.level1 = level1
+    window.level2 = level2;
+    window.levelRand = levelRand; 
+    window.load = load; 
+  </script>
+  <script src="js/controls.js" type="module"></script>
+  <script src="js/player.js"></script>
 
-  <body style="background-color: #222222">
-    <div id="loader" class="lds-dual-ring centered"></div>
-    <a-scene
-      fog="type: linear; color: #111; far: 16; near: 7"
-      style="display: none;"
-    >
-      <!-- Assets -->
-      <a-assets>
-        <img id="pavement" src="assets/pavement.jpg" />
-        <img id="brick-02" src="assets/brick-02.jpg" />
-        <img id="ball" src="assets/ball.jpg" />
-        <img id="red-carpet" src="assets/red-carpet.jpg" />
-        <img id="start" src="assets/start.jpg" />
-        <img id="finish" src="assets/finish.jpg" />
-      </a-assets>
+  <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-      <!-- Environment -->
-      <a-sky height="2048" color="#111" width="2048"></a-sky>
-      <a-light type="ambient" color="#fff" intensity="0.8"></a-light>
-      <a-plane
-        material="src: #pavement; repeat: 50 50"
-        static-body
-        rotation="-90 0 0"
-        height="100"
-        width="100"
-      ></a-plane>
+<body style="background-color: #222222">
+  <div id="loader" class="lds-dual-ring centered"></div>
+  <a-scene fog="type: linear; color: #111; far: 16; near: 7" style="display: none;">
+    <!-- Assets -->
+    <a-assets>
+      <img id="pavement" src="assets/pavement.jpg" alt="pavement" />
+      <img id="brick-02" src="assets/brick-02.jpg" alt="brick-02" />
+      <img id="ball" src="assets/ball.jpg" alt="ball" />
+      <img id="red-carpet" src="assets/red-carpet.jpg" alt="red-carpet" />
+      <img id="start" src="assets/start.jpg" alt="start" />
+      <img id="finish" src="assets/finish.jpg" alt="finish" />
+    </a-assets>
 
-      <!-- Player -->
-      <a-entity
-        id="player"
-        camera="user-height: 1.7"
-        universal-controls
-        kinematic-body
-        listener
-        player
-      >
-      </a-entity>
+    <!-- Environment -->
+    <a-sky height="2048" color="#111" width="2048"></a-sky>
+    <a-light type="ambient" color="#fff" intensity="0.8"></a-light>
+    <a-plane material="src: #pavement; repeat: 50 50" static-body rotation="-90 0 0" height="100" width="100"></a-plane>
 
-      <!-- Maze -->
-      <a-entity mazify> </a-entity>
-    </a-scene>
+    <!-- Player -->
+    <a-entity id="player" camera="user-height: 1.7" universal-controls kinematic-body listener player>
+    </a-entity>
 
-    <!-- The Modal -->
-    <div id="finishDialog" class="modal mazify" style="display: none;">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close" onclick="cont()">&times;</span>
-          <h2>Finished</h2>
-        </div>
-        <div class="modal-body">
-          <p>Congratulation</p>
-          <p>You have found the finish point</p>
-        </div>
-        <div class="modal-footer">
-          <h3></h3>
-          <button class="button" onclick="reset()">Play Again</button>
-          <button class="button" onclick="cont()">Continue</button>
-        </div>
+    <!-- Maze -->
+    <a-entity id="maze" mazify> </a-entity>
+  </a-scene>
+
+  <!-- The Game Menu Modal -->
+  <div id="menuDialog" class="modal mazify" style="display: block;">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close" onclick="cont()">&times;</span>
+        <h2>Welcome to Mazify</h2>
+      </div>
+      <div class="modal-body">
+        <h3>Controls</h3>
+        <p><strong>Forward:</strong> Up Arrow / W</p>
+        <p><strong>Backward:</strong> Down Arrow / S</p>
+        <p><strong>Left:</strong> Left Arrow / A</p>
+        <p><strong>Right:</strong> Right Arrow / D</p>
+        <p><strong>Jump:</strong> Space</p>
+        <p><strong>Exit/Pause:</strong> Escape (press twice)</p>
+
+      </div>
+      <div class="modal-footer">
+        <h3>Select Level:</h3>
+        <button class="button" onclick="load()">Load</button>
+        <button class="button" onclick="level1()">Level 1</button>        
+        <button class="button" onclick="level2()">Level 2</button>
+        <button class="button" onclick="levelRand()">Random</button>
+        <button class="button" onclick="cont()">Play</button>
       </div>
     </div>
-  </body>
+  </div>
+
+  <!-- The Modal -->
+  <div id="finishDialog" class="modal mazify" style="display: none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close" onclick="cont()">&times;</span>
+        <h2>Finished</h2>
+      </div>
+      <div class="modal-body">
+        <p>Congratulation</p>
+        <p>You have found the finish point</p>
+      </div>
+      <div class="modal-footer">
+        <h3></h3>
+        <button class="button" onclick="reset()">Play Again</button>
+        <button class="button" onclick="cont()">Continue</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
 </html>
