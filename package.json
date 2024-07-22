@@ -28,7 +28,7 @@
   "homepage": "https://github.com/palashbhowmick/mazify-3d#readme",
   "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^2.29.1",
+    "browser-sync": "^3.0.2",
     "five-server": "^0.1.3"
   }
 }
